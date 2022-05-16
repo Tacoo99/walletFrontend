@@ -1,27 +1,38 @@
 import React from 'react';
 import './App.css';
 import Nav from './components/shared/Nav';
-import MainMenu from './components/Welcome';
+import MainMenu from './components/MainMenu';
 import Dashboard from './components/dashboard/Dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CreateWallet from './components/dashboard/operations/CreateWallet';
+import { Provider } from 'react-redux';
+import store from './Store';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import CreateWallet from './components/dashboard/dashboardoperations/CreateWallet';
 import NotFound from './components/shared/NotFound';
 import MyAccount from './components/dashboard/MyAccount';
+import UpdateWallet from './components/dashboard/dashboardoperations/UpdateWallet';
+import Transaction from './components/transactions/Transaction';
+import AddTransaction from './components/transactions/transactionoperations/AddTransaction';
 
 function App() {
   return (
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<MainMenu />} />
-          <Route path="/account" element={<><Nav /><MyAccount /></>} />
-          <Route path="/dashboard" element={<><Nav /><Dashboard /></>} />
-          <Route path="/createwallet" element={<><Nav /><CreateWallet /></>} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Route path="/" component={Nav} />
+        <Switch>
+          <Route path="/" exact component={MainMenu} />
+          <Route path="/account" exact component={MyAccount} />
+          <Route path="/dashboard" exact component={Dashboard} />
+          <Route path="/createwallet" exact component={CreateWallet} />
+          <Route path="/updatewallet/:id" exact component={UpdateWallet} />
+          <Route path="/transactions/:id" exact component={Transaction} />
+          <Route path="/trns/add/:id" exact component={AddTransaction} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

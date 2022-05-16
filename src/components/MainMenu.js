@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
-class Welcome extends Component {
+class MainMenu extends Component {
   render() {
     return (
       <div className="light-overlay text-dark">
@@ -90,4 +90,4 @@ class Welcome extends Component {
   }
 }
 
-export default Welcome;
+export default MainMenu;
