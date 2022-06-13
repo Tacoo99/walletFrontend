@@ -1,7 +1,7 @@
 import FacebookLogin from 'react-facebook-login';
 import { Card, Image } from 'react-bootstrap';
 import React, { useState } from 'react';
-import UserProfile from './UserProfile';
+import { ReactSession }  from 'react-client-session';
 
 function Facebook() {
 
@@ -9,7 +9,7 @@ function Facebook() {
 
     window.setTimeout(function () {
       window.location.href = 'http://localhost:3000/dashboard';
-    }, 5000);
+    }, 3000);
 
   }
 
@@ -45,6 +45,8 @@ function Facebook() {
                   icon="fa-facebook" />
               }
 
+              {login && ReactSession.set("loggedUser", data.name)}
+
               {login &&
                 <Image src={picture} roundedCircle />
 
@@ -54,16 +56,14 @@ function Facebook() {
             {login &&
               <Card.Body>
                 <Card.Title>Witaj {data.name}</Card.Title>
-                <Card.Body>Zalogowano pomyślnie, przekierowanie nastąpi za 5 sekund</Card.Body>
+                <Card.Body>Zalogowano pomyślnie, przekierowanie nastąpi za 3 sekundy</Card.Body>
               </Card.Body>
             }
           </Card>
         </div>
       </div>
-    
-      {login && UserProfile.setName(data.name)}
 
-      { login && redirect()}
+      {login && redirect()}
 
     </div>
 

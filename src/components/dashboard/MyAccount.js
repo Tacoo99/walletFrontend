@@ -2,14 +2,28 @@ import React, { Component } from 'react'
 import {
   faPlus,
   faWallet,
-  faMoneyCheckDollar,
+  faArrowRightFromBracket
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LinkContainer } from "react-router-bootstrap";
+import { ReactSession }  from 'react-client-session';
 
+const logout = () => {
+  ReactSession.set('loggedUser',null);
+  alert('Wylogowano pomyślnie');
+  window.location.href = "http://localhost:3000/";
+}
 
 class MyAccount extends Component {
   render() {
+
+    let loggedUSer = ReactSession.get("loggedUser");
+
+      if(loggedUSer == null){
+        window.location.href = "http://localhost:3000/403";
+    }
+
+    else{
     return (
       <div className="light-overlay text-dark">
         <div
@@ -55,19 +69,17 @@ class MyAccount extends Component {
                     <p className="lead">Wszystkie portfele</p>
                   </div>
                 </LinkContainer>
-
-                <LinkContainer to="/dashboard">
-                  <div className="col-lg-2 col-md-auto m-3 shadow p-3 mb-5 bg-white rounded hoverStyle">
+                
+                  <div onClick={logout} className="col-lg-2 col-md-auto m-3 shadow p-3 mb-5 bg-white rounded hoverStyle">
                     <FontAwesomeIcon
                       size="6x"
                       style={{
                         margin: "10%",
                       }}
-                      icon={faMoneyCheckDollar}
+                      icon={faArrowRightFromBracket}
                     />
-                    <p className="lead">Stan konta</p>
+                    <p className="lead">Wyloguj się</p>
                   </div>
-                </LinkContainer>
               </div>
             </div>
           </div>
@@ -75,6 +87,7 @@ class MyAccount extends Component {
       </div>
     );
   }
+}
 }
 
 export default MyAccount;

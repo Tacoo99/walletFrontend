@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import classnames from 'classnames'
 import {getWallet,updateWallet} from '../../../actions/projectActions'
+import { ReactSession }  from 'react-client-session';
 
 class UpdateWallet extends Component {
     constructor(props) {
@@ -58,6 +59,16 @@ class UpdateWallet extends Component {
     }
 
     render() {
+        let loggedUser = ReactSession.get("loggedUser");
+
+        const logout = () => {
+            window.location.href = "http://localhost:3000/403";
+}
+
+        if(loggedUser == null){
+            logout()
+        }
+        else{
         return (
             <div className="project">
                 <div className="container">
@@ -94,6 +105,7 @@ class UpdateWallet extends Component {
             </div>
         )
     }
+}
 }
 
 const mapStateToProps = (state) =>({

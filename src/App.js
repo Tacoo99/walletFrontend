@@ -16,6 +16,7 @@ import UpdateWallet from './components/dashboard/dashboardoperations/UpdateWalle
 import Transaction from './components/transactions/Transaction';
 import AddTransaction from './components/transactions/transactionoperations/AddTransaction';
 import Facebook from './components/shared/FacebookLogin'
+import AccessDenied from './components/shared/AccesDenied';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" component={Nav} />
         <Switch>
           <Route path="/" exact component={MainMenu} />
+          <Route path="/403" exact component={AccessDenied} />
           <Route path="/login" exact component={Facebook} />
           <Route path="/account" exact component={MyAccount} />
           <Route path="/dashboard" exact component={Dashboard} />

@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
+import { ReactSession }  from 'react-client-session';
 
 class MainMenu extends Component {
 
-
   render() {
+
+    let loggedUSer = ReactSession.get("loggedUser");
+    if(loggedUSer != null){
+      window.location.href = "http://localhost:3000/account";
+    }
     return (
       <div className="light-overlay text-dark">
         <div

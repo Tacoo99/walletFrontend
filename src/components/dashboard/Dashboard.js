@@ -6,7 +6,7 @@ import {getWallets} from '../../actions/projectActions'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import UserProfile from '../shared/UserProfile';
+import { ReactSession }  from 'react-client-session';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -32,9 +32,10 @@ class Dashboard extends Component {
     }
 
     render() {
-        var user = UserProfile.getName();
-        if(user != null){
-            alert('Zaloguj się!')
+
+        let loggedUSer = ReactSession.get("loggedUser");
+        if(loggedUSer == null){
+            window.location.href = "http://localhost:3000/403";
         }
         else{
         const wallets = this.props.wallets
