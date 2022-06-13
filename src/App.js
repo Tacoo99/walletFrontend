@@ -13,8 +13,6 @@ import CreateWallet from './components/dashboard/dashboardoperations/CreateWalle
 import NotFound from './components/shared/NotFound';
 import MyAccount from './components/dashboard/MyAccount';
 import UpdateWallet from './components/dashboard/dashboardoperations/UpdateWallet';
-import Transaction from './components/transactions/Transaction';
-import AddTransaction from './components/transactions/transactionoperations/AddTransaction';
 import Facebook from './components/shared/FacebookLogin'
 import AccessDenied from './components/shared/AccesDenied';
 import Payments from './components/dashboard/dashboardoperations/Payments';
@@ -37,8 +35,6 @@ function App() {
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/createwallet" exact component={CreateWallet} />
           <Route path="/updatewallet/:id" exact component={UpdateWallet} />
-          <Route path="/transactions/:id" exact component={Transaction} />
-          <Route path="/trns/add/:id" exact component={AddTransaction} />
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>

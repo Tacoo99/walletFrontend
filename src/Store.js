@@ -6,7 +6,7 @@ const initialState = {}
 const middleWare = [thunk]
 let store;
 
-if (window.navigator.userAgent.includes("Chrome")) {
+if (window.navigator.userAgent.includes("Chrome") || window.navigator.userAgent.includes("Mozilla")) {
     store = createStore(rootReducer,
         initialState,
         compose(applyMiddleware(...middleWare),

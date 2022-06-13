@@ -1,5 +1,4 @@
 import React, { Component, useState } from 'react'
-import { ReactSession } from 'react-client-session';
 import PayPal from "../../paypal/PayPal"
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

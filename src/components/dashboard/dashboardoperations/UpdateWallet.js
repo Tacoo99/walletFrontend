@@ -90,6 +90,10 @@ class UpdateWallet extends Component {
                                     <p className="text-danger">{this.state.errors.description}</p>
                                 </div>
                                 <div className="form-group">
+                                    <textarea value={this.state.currentBalance} onChange={(event) => this.changeHandler(event, "currentBalance")} className={classnames("form-control form-control-lg",{"is-invalid":this.state.errors.currentBalance})} placeholder="Stan konta"></textarea>
+                                    <p className="text-danger">{this.state.errors.currentBalance}</p>
+                                </div>
+                                <div className="form-group">
                                     <select className="form-control form-control-lg" value={this.state.priority} onChange={(event) => this.changeHandler(event, "priority")}>
                                         <option value={3}>Wyświetl priorytet</option>
                                         <option value={1}>Wysoki</option>
