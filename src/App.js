@@ -17,6 +17,9 @@ import Transaction from './components/transactions/Transaction';
 import AddTransaction from './components/transactions/transactionoperations/AddTransaction';
 import Facebook from './components/shared/FacebookLogin'
 import AccessDenied from './components/shared/AccesDenied';
+import Payments from './components/dashboard/dashboardoperations/Payments';
+import Success from './components/paypal/Success';
+import Failed from './components/paypal/Failed';
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
         <Route path="/" component={Nav} />
         <Switch>
           <Route path="/" exact component={MainMenu} />
+          <Route path="/success" exact component={Success} />
+          <Route path="/failed" exact component={Failed} />
+          <Route path="/payments" exact component={Payments} />
           <Route path="/403" exact component={AccessDenied} />
           <Route path="/login" exact component={Facebook} />
           <Route path="/account" exact component={MyAccount} />

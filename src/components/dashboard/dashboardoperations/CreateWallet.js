@@ -3,6 +3,10 @@ import { createWallet } from '../../../actions/projectActions'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 import { ReactSession } from 'react-client-session';
+import { faShop } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Link} from 'react-router-dom'
+
 
 class CreateWallet extends Component {
     constructor(props) {
@@ -41,15 +45,42 @@ class CreateWallet extends Component {
     }
 
     render() {
-
         let loggedUser = ReactSession.get("loggedUser");
-
+        let createWallet = ReactSession.get("createWallet");
         const logout = () => {
             window.location.href = "http://localhost:3000/403";
         }
 
         if(loggedUser == null){
             logout()
+        }
+        if(createWallet == null){
+            return(
+            <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="error-template">
+                        <h1>
+                            Ups!</h1>
+                        <h2>
+                            Niestety nie masz do tego dostępu!</h2>
+                        <div className="error-details">
+                        Zapraszamy do skorzystania z naszego sklepu w celu odblokowania tej funkcji
+                        </div>
+                        <div className="error-actions">
+                            <Link to="/payments" className="btn btn-primary btn-lg">
+                            <FontAwesomeIcon style={{
+                                            marginRight: 10
+                                        }}
+
+                                            icon={faShop} />
+                                Przejdź do sklepu </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            )
         }
         else{
             return (

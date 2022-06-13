@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
   faPlus,
   faWallet,
-  faArrowRightFromBracket
+  faArrowRightFromBracket,
+  faShop
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LinkContainer } from "react-router-bootstrap";
@@ -67,6 +68,19 @@ class MyAccount extends Component {
                       icon={faWallet}
                     />
                     <p className="lead">Wszystkie portfele</p>
+                  </div>
+                </LinkContainer>
+
+                <LinkContainer to="/payments">
+                  <div className="col-lg-2 col-md-auto m-3 shadow p-3 mb-5 bg-white rounded hoverStyle">
+                    <FontAwesomeIcon
+                      size="6x"
+                      style={{
+                        margin: "10%",
+                      }}
+                      icon={faShop}
+                    />
+                    <p className="lead">Sklep</p>
                   </div>
                 </LinkContainer>
                 
