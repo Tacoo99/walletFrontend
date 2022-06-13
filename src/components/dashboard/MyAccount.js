@@ -31,7 +31,7 @@ class MyAccount extends Component {
                 className="row justify-content-center"
               >
                 <LinkContainer to="/createwallet">
-                  <div className="col-lg-2 col-md-auto m-3 shadow-sm p-3 mb-5 bg-white rounded hoverStyle">
+                  <div className="col-lg-2 col-md-auto m-3 shadow p-3 mb-5 bg-white rounded hoverStyle">
                     <FontAwesomeIcon
                       size="6x"
                       style={{
@@ -44,7 +44,7 @@ class MyAccount extends Component {
                 </LinkContainer>
 
                 <LinkContainer to="/dashboard">
-                  <div className="col-lg-2 col-md-auto m-3 shadow-sm p-3 mb-5 bg-white rounded hoverStyle">
+                  <div className="col-lg-2 col-md-auto m-3 shadow p-3 mb-5 bg-white rounded hoverStyle">
                     <FontAwesomeIcon
                       size="6x"
                       style={{
@@ -57,7 +57,7 @@ class MyAccount extends Component {
                 </LinkContainer>
 
                 <LinkContainer to="/dashboard">
-                  <div className="col-lg-2 col-md-auto m-3 shadow-sm p-3 mb-5 bg-white rounded hoverStyle">
+                  <div className="col-lg-2 col-md-auto m-3 shadow p-3 mb-5 bg-white rounded hoverStyle">
                     <FontAwesomeIcon
                       size="6x"
                       style={{

@@ -6,16 +6,16 @@ import {getWallets} from '../../actions/projectActions'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import UserProfile from '../shared/UserProfile';
 
 class Dashboard extends Component {
     constructor(props) {
         super(props)
-    
         this.state = {
              totalBalance:0.0
         }
+        
     }
-    
 
     componentWillReceiveProps(nextProps){
         if(nextProps.wallets){
@@ -30,7 +30,13 @@ class Dashboard extends Component {
     componentDidMount(){
         this.props.getWallets()
     }
+
     render() {
+        var user = UserProfile.getName();
+        if(user != null){
+            alert('Zaloguj się!')
+        }
+        else{
         const wallets = this.props.wallets
         const walletComponent = wallets.map(wallet=>(<DashboardItem key={wallet.id} wallet={wallet} />))
 
@@ -55,13 +61,13 @@ class Dashboard extends Component {
                             </div>
                             <hr />
                             {
-                                //<!-- Project Item Component -->
+                               
                             }
 
                             {walletComponent}
 
                             {
-                                //<!-- End of Project Item Component -->
+                                
                             }
 
 
@@ -71,6 +77,7 @@ class Dashboard extends Component {
             </div>
         )
     }
+}
 }
 const mapStateToProps = (state) => ({
     wallets:state.wallet.wallets

@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import {
   faHome,
   faRightToBracket,
-  faUserPlus,
-  faMoneyBill,
   faWallet,
+  faList
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -74,14 +73,16 @@ class Nav extends Component {
                     style={{
                       marginRight: 5,
                     }}
-                    icon={faMoneyBill}
+                    icon={faList}
                   />
-                  Zobacz transakcje
+                  Wszystie portfele
                 </Link>
               </li>
+
             </ul>
           </div>
           <div class="d-flex align-items-center">
+            <Link to="/login">
             <button type="button" class="btn btn-primary px-3 me-2">
               <FontAwesomeIcon
                 style={{
@@ -91,15 +92,7 @@ class Nav extends Component {
               />
               Zaloguj się
             </button>
-            <button type="button" class="btn btn-primary me-3">
-              <FontAwesomeIcon
-                style={{
-                  marginRight: 8,
-                }}
-                icon={faUserPlus}
-              />
-              Załóż konto
-            </button>
+            </Link>
           </div>
         </div>
       </nav>

@@ -15,6 +15,7 @@ import MyAccount from './components/dashboard/MyAccount';
 import UpdateWallet from './components/dashboard/dashboardoperations/UpdateWallet';
 import Transaction from './components/transactions/Transaction';
 import AddTransaction from './components/transactions/transactionoperations/AddTransaction';
+import Facebook from './components/shared/FacebookLogin'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" component={Nav} />
         <Switch>
           <Route path="/" exact component={MainMenu} />
+          <Route path="/login" exact component={Facebook} />
           <Route path="/account" exact component={MyAccount} />
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/createwallet" exact component={CreateWallet} />
