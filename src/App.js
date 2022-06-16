@@ -18,6 +18,8 @@ import AccessDenied from './components/shared/AccesDenied';
 import Payments from './components/dashboard/dashboardoperations/Payments';
 import Success from './components/paypal/Success';
 import Failed from './components/paypal/Failed';
+import Transaction from './components/transactions/Transaction';
+import AddTransaction from './components/transactions/transactionoperations/AddTransaction'
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/createwallet" exact component={CreateWallet} />
           <Route path="/updatewallet/:id" exact component={UpdateWallet} />
+          <Route path="/transactions/:id" exact component={Transaction} />
+          <Route path="/trns/add/:id" exact component={AddTransaction} />
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>

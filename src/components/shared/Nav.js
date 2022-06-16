@@ -5,7 +5,8 @@ import {
   faWallet,
   faList,
   faUser,
-  faArrowRightFromBracket
+  faArrowRightFromBracket,
+  faShop
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -145,6 +146,23 @@ class Nav extends Component {
                     icon={faList}
                   />
                   Portfele
+                </Link>
+              </li>
+
+              <li
+                style={{
+                  marginLeft: 3,
+                }}
+                className="nav-item"
+              >
+                <Link className="nav-link" to="/payments">
+                  <FontAwesomeIcon
+                    style={{
+                      marginRight: 5,
+                    }}
+                    icon={faShop}
+                  />
+                  Sklep
                 </Link>
               </li>
 

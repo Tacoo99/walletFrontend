@@ -22,7 +22,7 @@ class MainMenu extends Component {
             <div className="col-md-12 text-center">
               <h1 className="display-3 mb-4">Twój cyfrowy portfel</h1>
               <p className="lead">
-                Z łatwością zarządzaj swoimi funduszami oraz transakcjami!
+                Z łatwością zarządzaj swoimi funduszami!
               </p>
               <hr />
               <div

@@ -1,15 +1,25 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import PayPal from "../../paypal/PayPal"
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactSession }  from 'react-client-session';
 
 
 function Payments() {
+
     const [checkout, setCheckOut] = useState(false);
 
     function Order() {
+        let createWallet = ReactSession.get("createWallet");
+        let currUser = ReactSession.get("loggedUser");
+        if(createWallet !== currUser){
         setCheckOut(true);
     }
+    else{
+        alert('Posiadasz już tą funkcję!')
+
+    }
+}
 
     return (
         <div className='Payments'>
@@ -40,7 +50,7 @@ function Payments() {
                             <div className="text-center">
                             <h1 className="display-3 mb-4">Sklep</h1>
                             <hr />
-                            <div onClick={() => {Order()} } className="col-lg-2 col-md-auto m-3 shadow p-3 mb-5 bg-white rounded hoverStyle">
+                            <div title="Funkcja dodawania portfeli" onClick={() => {Order()} } className="col-lg-2 col-md-auto m-3 shadow p-3 mb-5 bg-white rounded hoverStyle">
                                 <FontAwesomeIcon
                                     size="6x"
                                     style={{

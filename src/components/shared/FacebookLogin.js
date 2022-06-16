@@ -8,7 +8,7 @@ function Facebook() {
   const redirect = () => {
 
     window.setTimeout(function () {
-      window.location.href = 'http://localhost:3000/dashboard';
+      window.location.href = 'http://localhost:3000/account';
     }, 3000);
 
   }

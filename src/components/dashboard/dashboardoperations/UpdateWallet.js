@@ -29,8 +29,8 @@ class UpdateWallet extends Component {
                 name: nextProps.wallet.name,
                 accountNumber: nextProps.wallet.accountNumber,
                 description: nextProps.wallet.description,
-                currentBalance:nextProps.wallet.currentBalance,
                 priority: nextProps.wallet.priority,
+                currentBalance:nextProps.wallet.currentBalance,
             })
         }
     }
@@ -89,10 +89,7 @@ class UpdateWallet extends Component {
                                     <textarea value={this.state.description} onChange={(event) => this.changeHandler(event, "description")} className={classnames("form-control form-control-lg",{"is-invalid":this.state.errors.description})} placeholder="Opis"></textarea>
                                     <p className="text-danger">{this.state.errors.description}</p>
                                 </div>
-                                <div className="form-group">
-                                    <textarea value={this.state.currentBalance} onChange={(event) => this.changeHandler(event, "currentBalance")} className={classnames("form-control form-control-lg",{"is-invalid":this.state.errors.currentBalance})} placeholder="Stan konta"></textarea>
-                                    <p className="text-danger">{this.state.errors.currentBalance}</p>
-                                </div>
+                                
                                 <div className="form-group">
                                     <select className="form-control form-control-lg" value={this.state.priority} onChange={(event) => this.changeHandler(event, "priority")}>
                                         <option value={3}>Wyświetl priorytet</option>

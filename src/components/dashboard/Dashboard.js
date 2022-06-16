@@ -6,7 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { ReactSession }  from 'react-client-session';
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../App.css"
+import {Link} from 'react-router-dom'
+
 
 class Dashboard extends Component {
     constructor(props) {
@@ -14,7 +18,6 @@ class Dashboard extends Component {
         this.state = {
              totalBalance:0.0
         }
-        
     }
 
     componentWillReceiveProps(nextProps){
@@ -51,27 +54,29 @@ class Dashboard extends Component {
                                 }}
                                 className="display-4 text-center">Moje portfele</h1>
                             <hr/>
+                            <Link to="/createwallet" className="btn btn-primary btn-lg">
+                            <FontAwesomeIcon style={{
+                                            marginRight: 5
+                                        }}
+
+                                            icon={faPlus} />
+                                Dodaj portfel </Link>
+                            
+                           
                             <div className="card text-center">
                                 <div className="card-header bg-success text-white">
                                     <h4>Stan konta (Suma)</h4>
                                     <h1>{this.state.totalBalance} zł</h1>
                                 </div>
                             </div>
-                            {
-                               
-                            }
-
+                           
                             {walletComponent}
-
-                            {
-                                
-                            }
-
 
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+            
         )
     }
 }
