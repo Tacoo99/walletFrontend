@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {createTransaction} from '../../../actions/projectActions';
 import { connect } from 'react-redux';
+import {getWallet,updateWallet} from '../../../actions/projectActions'
 
 
 class AddTransaction extends Component {
@@ -9,23 +10,82 @@ class AddTransaction extends Component {
         super(props)
 
         this.state = {
+
+            //Transaction
             amount: '',
             description: '',
-            type: '1'
+            type: '1',
+
+
+            //Wallet
+            id:'',
+            name: '',
+            accountNumber: '',
+            descriptionWallet: '',
+            priority: '',
+            currentBalance:'',
+            errors:'',
+
+            newBalance: ''
         }
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.errors){
+            this.setState({errors:nextProps.errors})
+        }
+        if(nextProps.wallet){
+            this.setState({
+                id:nextProps.wallet.id,
+                name: nextProps.wallet.name,
+                accountNumber: nextProps.wallet.accountNumber,
+                descriptionWallet: nextProps.wallet.description,
+                priority: nextProps.wallet.priority,
+                currentBalance:nextProps.wallet.currentBalance,
+            })
+        }
+    }
+
+    componentDidMount(){
+        this.props.getWallet(this.props.match.params.id)
     }
 
     changeHandler = (event, fieldName, checkbox) => {
         this.setState({
-            [fieldName]: checkbox ? event.target.checked : event.target.value
+            [fieldName]: checkbox ? event.target.checked : event.target.value,
         })
+
     }
     handleSubmit = (event) => {
+
+        let balance;
+
         let newTransaction = { 
             amount: this.state.amount, 
             description: this.state.description, 
-            type: this.state.type 
+            type: this.state.type,
         }
+
+        if(this.state.type === '1'){
+           balance = parseInt(this.state.currentBalance) + parseInt(this.state.amount);
+        }
+        if(this.state.type === '2'){
+            balance = parseInt(this.state.currentBalance) - parseInt(this.state.amount);
+            if(balance < 0){
+                alert('Stan konta nie może być mniejszy niż 0!')
+                return
+            }
+        }
+        
+        const updateWallet = {
+            id:this.state.id,
+            name: this.state.name,
+            accountNumber: this.state.accountNumber,
+            description: this.state.descriptionWallet,
+            currentBalance: balance,
+            priority: this.state.priority
+        }
+        this.props.updateWallet(this.state.id,updateWallet,this.props.history)
         this.props.createTransaction(newTransaction,this.props.history,this.props.match.params.id);
         event.preventDefault();
     }
@@ -84,4 +144,9 @@ class AddTransaction extends Component {
     }
 }
 
-export default connect(null,{createTransaction})(AddTransaction)
+const mapStateToProps = (state) =>({
+    errors:state.errors,
+    wallet:state.wallet.wallet
+})
+
+export default connect(mapStateToProps,{createTransaction, getWallet, updateWallet})(AddTransaction)

@@ -8,7 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { ReactSession }  from 'react-client-session';
+import { ReactSession } from 'react-client-session';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -36,11 +36,11 @@ const TransactionTable = () => {
     const [product, setProduct] = useState([]);
     const [search, setSearch] = useState("");
     let id = ReactSession.get('walletID');
+    const [result] = useState("");
 
     const getTransactionData = async () => {
         try {
             const data = await axios.get(`http://localhost:8080/transaction/${id.id}`)
-            console.log(data.data)
             setProduct(data.data)
         }
         catch (e) {
@@ -81,8 +81,9 @@ const TransactionTable = () => {
                                 return item
                             }
                             else if (item.description.toLowerCase().includes(search.toLowerCase())) {
-                                return item
+                                    return item;
                             }
+                            
                         })
                             .map((item) => {
                                 return (
@@ -114,6 +115,7 @@ const TransactionTable = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+
         </div>
     );
 };
