@@ -3,7 +3,7 @@ import { createWallet } from '../../../actions/projectActions'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 import { ReactSession } from 'react-client-session';
-import { faShop } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faShop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Link} from 'react-router-dom'
 
@@ -46,15 +46,51 @@ class CreateWallet extends Component {
     }
 
     render() {
+
         let loggedUser = ReactSession.get("loggedUser");
         let createWallet = ReactSession.get("createWallet");
-        ReactSession.set(loggedUser,'0');
-        const logout = () => {
+
+        if(loggedUser == null){
             window.location.href = "http://localhost:3000/403";
         }
 
-        if(loggedUser == null){
-            logout()
+        console.log(createWallet);
+        console.log(ReactSession.get("walletsQuantity"));
+
+        if( (createWallet === null) && (ReactSession.get("walletsQuantity") === 2 )) {
+            return(
+                <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="error-template">
+                        <h1>
+                            Ups!</h1>
+                        <h2>
+                            Wykorzystałeś limit darmowych portfeli!</h2>
+                        <div className="error-details">
+                        Usuń portfel lub kup funkcję dodawania większej ilości portfeli
+                        </div>
+                        <div className="error-actions">
+                            <Link to="/dashboard" className="btn btn-primary btn-lg">
+                            <FontAwesomeIcon style={{
+                                            marginRight: 5
+                                        }}
+
+                                            icon={faHome} />
+                                Wróć </Link>
+                                <Link to="/payments" className="btn btn-primary btn-lg">
+                            <FontAwesomeIcon style={{
+                                            marginRight: 5
+                                        }}
+
+                                            icon={faShop} />
+                                Przejdź do sklepu </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            )
         }
         else{
             return (

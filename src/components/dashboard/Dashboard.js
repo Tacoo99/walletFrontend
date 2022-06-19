@@ -10,6 +10,7 @@ import { faPlus, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from 'react-bootstrap'
 import "../../App.css"
+import { Link } from "react-router-dom"
 
 
 class Dashboard extends Component {
@@ -29,9 +30,10 @@ class Dashboard extends Component {
             this.state.walletsQuantity = 0
             for(let i=0;i<nextProps.wallets.length;i++){
                 this.state.walletsQuantity = parseInt(this.state.walletsQuantity + 1)
-                console.log(this.state.walletsQuantity)
+                
                 totalBal=totalBal+nextProps.wallets[i].currentBalance
             }
+            ReactSession.set("walletsQuantity", parseInt(this.state.walletsQuantity));
             this.setState({totalBalance:totalBal})
         }
     }
@@ -41,17 +43,6 @@ class Dashboard extends Component {
     }
 
     render() {
-
-        const buttonHref=() =>{
-            if(parseInt(this.state.walletsQuantity) === 2){
-                if(window.confirm('Posiadasz już maksymalną ilość portfeli, usuń portfel lub odblokuj funkcję w sklepie!')){
-                    window.location.href = "http://localhost:3000/payments";
-                }
-            }
-            else{
-                window.location.href = "http://localhost:3000/createwallet";
-            }
-        }
 
         let loggedUSer = ReactSession.get("loggedUser");
         let createWallet = ReactSession.get('createWallet');
@@ -77,13 +68,13 @@ class Dashboard extends Component {
                                 }}
                                 className="display-4 text-center">Moje portfele</h1>
                             <hr/>
-                            <Button onClick={buttonHref} className="btn btn-primary btn-lg">
+                            <Link to="/createwallet" className="btn btn-primary btn-lg">
                             <FontAwesomeIcon style={{
                                             marginRight: 5
                                         }}
 
                                             icon={faPlus} />
-                                Dodaj portfel </Button>
+                                Dodaj portfel </Link>
 
                                 </div>
                                 <div className='cold-md-2 bg-light d-flex justify-content-end justify-items-center '>
