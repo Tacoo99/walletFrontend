@@ -44,7 +44,7 @@ class Dashboard extends Component {
 
         const buttonHref=() =>{
             if(parseInt(this.state.walletsQuantity) === 2){
-                if(window.confirm('Posiadasz już maksymalną ilość portfeli, usuń lub odblokuj funkcję w sklepie!')){
+                if(window.confirm('Posiadasz już maksymalną ilość portfeli, usuń portfel lub odblokuj funkcję w sklepie!')){
                     window.location.href = "http://localhost:3000/payments";
                 }
             }
