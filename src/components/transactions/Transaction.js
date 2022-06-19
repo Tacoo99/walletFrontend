@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {getWallet, getTransactions} from '../../actions/projectActions'
 import { ReactSession }  from 'react-client-session';
 import TransactionTable from './TransactionTable'
+import { faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Transaction extends Component {
     constructor(props) {
@@ -42,10 +44,18 @@ class Transaction extends Component {
             
             <div className="container">
                 <Link to="/dashboard" className="btn btn-default btn-lg mb-3">
-                    Wróć
+                <FontAwesomeIcon style={{
+                    marginRight: 10
+                }}
+                      icon={faArrowLeft} 
+                    />Wróć
                 </Link>
                 <Link to={`/trns/add/${id}`} className="btn btn-info btn-lg mb-3">
-                    <i className="fas fa-plus-circle"> Dodaj nową transakcję</i>
+                <FontAwesomeIcon style={{
+                    marginRight: 10
+                }}
+                      icon={faPlus} 
+                    />Dodaj nową transakcję
                 </Link>
                 <br />
                 <div className="card text-center">

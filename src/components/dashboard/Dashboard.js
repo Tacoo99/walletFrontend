@@ -8,7 +8,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { ReactSession }  from 'react-client-session';
 import { faPlus, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from 'react-bootstrap'
 import "../../App.css"
 import { Link } from "react-router-dom"
 

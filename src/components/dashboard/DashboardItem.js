@@ -11,8 +11,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 class DashboardItem extends Component {
     render() {
         const wallet = this.props.wallet
+        
         const deleteBtnClick = () =>{
-            if(window.confirm("Na pewno chcesz usunąć ten portfel?")){
                 if(wallet.currentBalance > 0){
                     alert('Portfel nie jest pusty, przenieś najpierw swoje środki!');
                 }
@@ -20,7 +20,7 @@ class DashboardItem extends Component {
                 this.props.deleteWallet(this.props.wallet.id)
                 }
             }
-        }
+            
         return (
             <div className="container">
                 <div className="card card-body bg-light mb-3">
@@ -66,7 +66,7 @@ class DashboardItem extends Component {
                                     </li>
                                 </Link>
 
-                                <Link to="/dashboard" style={{ textDecoration: 'none' }} onClick={()=>deleteBtnClick()}>
+                                <Link to="#" style={{ textDecoration: 'none' }} data-toggle="modal" data-target="#deleteModal">
                                 <li className="list-group-item delete text-danger">
                                         <FontAwesomeIcon style={{
                                             marginRight: 5
@@ -81,6 +81,31 @@ class DashboardItem extends Component {
                         </div>
                     </div>
                 </div>
+
+                <div className="modal fade" id="deleteModal" role="dialog">
+            <div className="modal-dialog">
+
+              <div className="modal-content">
+                <div className="modal-header">
+                  
+                  <h5 style={{
+                    marginRight: '5%'
+                  }} className="modal-title">Potwierdzenie</h5>
+                </div>
+                <div className="modal-body">
+                  <p>Na pewno chcesz usunąć ten portfel?</p>
+                </div>
+                <div className="modal-footer justify-content-between">
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Nie</button>
+                  <div className='justify-content-between'>
+                  <button type="button" onClick={() => deleteBtnClick()} data-dismiss="modal" className="btn btn-default">Tak</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
             </div>
         )
     }

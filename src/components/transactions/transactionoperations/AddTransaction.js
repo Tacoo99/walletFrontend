@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {getWallet,updateWallet} from '../../../actions/projectActions'
 
 
+
 class AddTransaction extends Component {
     constructor(props) {
         super(props)
@@ -107,7 +108,8 @@ class AddTransaction extends Component {
                             <h4 style={{
                                 marginBottom: '4%'
                             }}
-                            className="display-4 text-center">Dodaj nową transakcję</h4>
+                            className="display-4 text-center">
+                                Dodaj nową transakcję</h4>
                             <form onSubmit={this.handleSubmit}>
                                 <div style={{
                                     marginBottom: '1%'
