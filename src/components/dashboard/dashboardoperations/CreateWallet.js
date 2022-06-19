@@ -34,6 +34,7 @@ class CreateWallet extends Component {
     }
 
     submitHandler = (event) => {
+
         const newWallet = {
             name: this.state.name,
             accountNumber: this.state.accountNumber,
@@ -47,6 +48,7 @@ class CreateWallet extends Component {
     render() {
         let loggedUser = ReactSession.get("loggedUser");
         let createWallet = ReactSession.get("createWallet");
+        ReactSession.set(loggedUser,'0');
         const logout = () => {
             window.location.href = "http://localhost:3000/403";
         }

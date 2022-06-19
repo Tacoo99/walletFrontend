@@ -6,7 +6,6 @@ import { ReactSession }  from 'react-client-session';
 function Facebook() {
 
   const redirect = () => {
-
     window.setTimeout(function () {
       window.location.href = 'http://localhost:3000/account';
     }, 3000);
@@ -56,6 +55,7 @@ function Facebook() {
             {login &&
               <Card.Body>
                 <Card.Title>Witaj {data.name}</Card.Title>
+                {ReactSession.set(data.name, "0")}
                 <Card.Body>Zalogowano pomyślnie, przekierowanie nastąpi za 3 sekundy</Card.Body>
               </Card.Body>
             }
