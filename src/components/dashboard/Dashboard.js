@@ -67,7 +67,7 @@ class Dashboard extends Component {
                                 }}
                                 className="display-4 text-center">Moje portfele</h1>
                             <hr/>
-                            <Link to="/createwallet" className="btn btn-primary btn-lg">
+                                    <Link to="/createwallet" className="btn btn-primary btn-lg">
                             <FontAwesomeIcon style={{
                                             marginRight: 5
                                         }}

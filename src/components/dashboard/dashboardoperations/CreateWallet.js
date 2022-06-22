@@ -106,7 +106,7 @@ class CreateWallet extends Component {
                                         <p className="text-danger">{this.state.errors.name}</p>
                                     </div>
                                     <div className="form-group">
-                                        <input type="text" onChange={(event) => this.changeHandler(event, "accountNumber")} className={classnames("form-control form-control-lg", { "is-invalid": this.state.errors.accountNumber })} placeholder="Numer konta" />
+                                        <input type="number" onChange={(event) => this.changeHandler(event, "accountNumber")} className={classnames("form-control form-control-lg", { "is-invalid": this.state.errors.accountNumber })} placeholder="Numer konta" />
                                         <p className="text-danger">{this.state.errors.accountNumber}</p>
                                     </div>
                                     <div className="form-group">

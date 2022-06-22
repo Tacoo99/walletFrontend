@@ -7,14 +7,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class DashboardItem extends Component {
     render() {
         const wallet = this.props.wallet
+        const notify = () => toast.error('Portfel nie jest pusty, przenieś najpierw swoje środki!', {
+            position: "top-center",
+            autoClose: 3500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
 
         const deleteBtnClick = () => {
             if (wallet.currentBalance > 0) {
-                alert('Portfel nie jest pusty, przenieś najpierw swoje środki!');
+                { notify() }
             }
             else {
                 this.props.deleteWallet(this.props.wallet.id)
@@ -22,9 +33,21 @@ class DashboardItem extends Component {
         }
 
         return (
+
             <div className="container">
                 <div className="card card-body bg-light mb-3">
                     <div className="row" >
+                    <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                         <div className="col-lg-2 col-md-3 col-6">
                             <FontAwesomeIcon style={{
                                 marginRight: 5,
@@ -44,7 +67,7 @@ class DashboardItem extends Component {
                         </div>
                         <div className="col-md-4 col-12 d-lg-block">
                             <ul className="list-group">
-                                <Link to={`/transactions/${wallet.id}`}>
+                                <Link to={`/transactions/${wallet.id}`} style={{ textDecoration: 'none' }}>
                                     <li className="list-group-item text-success">
                                         <FontAwesomeIcon style={{
                                             marginRight: 5
@@ -97,7 +120,7 @@ class DashboardItem extends Component {
                             </div>
                             <div className="modal-footer justify-content-between">
                                 <button type="button" onClick={() => deleteBtnClick()} data-dismiss="modal" className="btn btn-default">Tak</button>
-                            
+
                                 <button type="button" className="btn btn-default" data-dismiss="modal">Nie</button>
                             </div>
                         </div>

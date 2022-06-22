@@ -36,7 +36,7 @@ const TransactionTable = () => {
     const [product, setProduct] = useState([]);
     const [search, setSearch] = useState("");
     let id = ReactSession.get('walletID');
-    const [result] = useState("");
+    let typ = null;
 
     const getTransactionData = async () => {
         try {

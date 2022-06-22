@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import {createTransaction} from '../../../actions/projectActions';
 import { connect } from 'react-redux';
 import {getWallet,updateWallet} from '../../../actions/projectActions'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -60,22 +62,20 @@ class AddTransaction extends Component {
     handleSubmit = (event) => {
 
         let balance;
+        const notify = () => toast.error('Portfel nie jest pusty, przenieś najpierw swoje środki!', {
+            position: "top-center",
+            autoClose: 3500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
 
         let newTransaction = { 
             amount: this.state.amount, 
             description: this.state.description, 
             type: this.state.type,
-        }
-
-        if(this.state.type === '1'){
-           balance = parseInt(this.state.currentBalance) + parseInt(this.state.amount);
-        }
-        if(this.state.type === '2'){
-            balance = parseInt(this.state.currentBalance) - parseInt(this.state.amount);
-            if(balance < 0){
-                alert('Stan konta nie może być mniejszy niż 0!')
-                return
-            }
         }
         
         const updateWallet = {
@@ -86,6 +86,16 @@ class AddTransaction extends Component {
             currentBalance: balance,
             priority: this.state.priority
         }
+
+        if(this.state.type === '1'){
+            balance = parseInt(this.state.currentBalance) + parseInt(this.state.amount);
+         }
+         if(this.state.type === '2'){
+             balance = parseInt(this.state.currentBalance) - parseInt(this.state.amount);
+             if(balance < 0){
+                 { notify() }
+             }
+         }
         this.props.updateWallet(this.state.id,updateWallet,this.props.history)
         this.props.createTransaction(newTransaction,this.props.history,this.props.match.params.id);
         event.preventDefault();
@@ -101,6 +111,17 @@ class AddTransaction extends Component {
             <div className="add-PBI">
                 <div className="container">
                     <div className="row">
+                    <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                         <div className="col-md-8 m-auto">
                             <Link to={`/transactions/${id}`} className="btn btn-light">
                                 Wróć
@@ -116,6 +137,7 @@ class AddTransaction extends Component {
                                 }}
                                 className="form-group">
                                     <input type="number" min="1" value={amount} onChange={event => this.changeHandler(event, "amount", false)} className="form-control form-control-lg" placeholder="Kwota" required />
+                                    
                                 </div>
                                 <div className="form-group">
                                     <textarea value={description} onChange={event => this.changeHandler(event, "description", false)} className="form-control form-control-lg" placeholder="Opis" required ></textarea>

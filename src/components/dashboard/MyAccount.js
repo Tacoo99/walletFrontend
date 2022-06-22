@@ -114,12 +114,10 @@ class MyAccount extends Component {
                   <p>Na pewno chcesz wylogować się?</p>
                 </div>
                 <div className="modal-footer justify-content-between">
+                <button type="button" onClick={() => logout()} className="btn btn-default">Tak</button>
                   <button type="button" className="btn btn-default" data-dismiss="modal">Nie</button>
-                  <div className='justify-content-between'>
-                  <button type="button" onClick={() => logout()} className="btn btn-default">Tak</button>
                   </div>
                 </div>
-              </div>
 
             </div>
           </div>
